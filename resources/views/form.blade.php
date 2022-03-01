@@ -17,16 +17,22 @@
         @endisset
 
                 @csrf
-                <div class="row">
-                    <div class="col">
+                <div class="col">
+                    <div class="row">
                         <input name="name"
-                               value="{{ isset($user) ? $user->name : null }}"
-                               type="text" class="form-control" placeholder="Name" aria-label="Name">
+                               value="{{ old('name', isset($user) ? $user->name : null)  }}"
+                               type="text" class="form-control" placeholder="Name" aria-label="name">
+                        @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="col">
-                        <input name="email"
-                               value="{{ isset($user) ? $user->email : null }}"
-                       type="text" class="form-control" placeholder="Email" aria-label="Email">
+                    <div class="row mt-3">
+                        <input name="@error('email') is-invalid @enderror email"
+                               value="{{ old('email', isset($user) ? $user->email : null)  }}"
+                       type="text" class="form-control" placeholder="email" aria-label="email">
+                        @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
             </div>
         </div>
 
