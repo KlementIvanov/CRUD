@@ -35,6 +35,7 @@
 
 <div class="container">
     <main>
+        <h1>@yield('title')</h1>
         @yield('content')
     </main>
 
